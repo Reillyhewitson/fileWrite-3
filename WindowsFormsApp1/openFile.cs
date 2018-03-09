@@ -33,6 +33,10 @@ namespace WindowsFormsApp1
                 directory = fbd.FileName;
                 Console.WriteLine(directory);
             }
+            string[] lines = File.ReadAllLines(directory);
+            string output = string.Join(Environment.NewLine, lines);
+            Console.WriteLine(output);
+            fileInput.Text = output;
 
 
         }
@@ -44,7 +48,7 @@ namespace WindowsFormsApp1
             Console.WriteLine(text);
             string[] Lines = text.Split(new[] { "\r\n", "\r", "\n" }, StringSplitOptions.None);
             Console.WriteLine(Lines);
-            File.AppendAllLines(directory, Lines);
+            File.WriteAllLines(directory, Lines);
             MessageBox.Show("Success", "Written");
             fileInput.Text = string.Empty;
         }
